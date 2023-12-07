@@ -1,8 +1,8 @@
 {
-  "name": "hamstr",
+  "name": "zeta",
   "version": "0.0.1",
   "description": "A twitter-style nostr web client",
-  "productName": "Hamstr",
+  "productName": "zeta",
   "author": "styppo",
   "private": true,
   "scripts": {

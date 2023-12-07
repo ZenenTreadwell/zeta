@@ -7,7 +7,7 @@
         ref="input"
         v-model="key"
         :placeholder="$t(placeholder)"
-        maxlength="63"
+        maxlength="64"
         :class="{
           valid: validKey,
           invalid: invalidKey,
@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      key: null,
+      key: window.localStorage.getItem('vibes_private_key') || null,
     }
   },
   computed: {
@@ -50,7 +50,7 @@ export default {
         : 'Paste your public or private key'
     },
     placeholder() {
-      return this.privateKeyOnly ? 'nsec…' : 'npub… / nsec…'
+      return this.privateKeyOnly ? 'nsec…' : 'npub… / nsec… / hex…'
     },
     buttonLabel() {
       return this.privateKeyOnly ? 'Continue' : 'Log in'
@@ -65,7 +65,9 @@ export default {
   methods: {
     isValidKey(str) {
       if (!str) return false
+      console.log('str', str, str.length)
       try {
+	if (str.length === 64) return true
         const { data, prefix } = bech32decode(str.toLowerCase())
         return (
           data.byteLength === 32 &&
@@ -81,6 +83,8 @@ export default {
       let opts
       if (bech32prefix(this.key) === 'npub') {
         opts = { pubkey: bech32ToHex(this.key) }
+      } else if (this.key.length === 64) {
+        opts = { privkey: this.key }
       } else {
         opts = { privkey: bech32ToHex(this.key) }
       }

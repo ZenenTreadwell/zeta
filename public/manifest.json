@@ -1,6 +1,6 @@
 {
-  "short_name": "Hamstr",
-  "name": "Hamstr - Nostr client",
+  "short_name": "Zeta",
+  "name": "Zeta - Nostr client",
   "start_url": "/home",
   "display": "standalone",
   "theme_color": "#15202b",

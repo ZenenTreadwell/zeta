@@ -2,20 +2,14 @@ import {defineStore} from 'pinia'
 import {Account} from 'src/nostr/Account'
 
 const RELAYS = [
-  'wss://relay.snort.social',
-  'wss://relay.nostr.ch',
-  'wss://nos.lol',
-  'wss://nostr-pub.semisol.dev',
-  'wss://nostr.einundzwanzig.space',
-  'wss://nostr.sg',
-  'wss://relay.nostrica.com',
+  'wss://relay.credenso.cafe',
 ]
 const RELAYS_VERSION = 3
 
 export const useSettingsStore = defineStore('settings', {
   state: () => ({
     accounts: {},
-    pubkey: null,
+    pubkey: window.localStorage.getItem('vibes_public_key') || null,
     relays: [].concat(RELAYS),
     relaysVersion: 0,
   }),
