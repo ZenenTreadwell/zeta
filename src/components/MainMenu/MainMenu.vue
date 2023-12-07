@@ -2,9 +2,9 @@
   <menu>
     <div class="menu-nav">
       <div class="menu-logo">
-        <router-link to="/">
+        <a href="/">
           <Logo />
-        </router-link>
+	</a>
       </div>
       <div v-for="(route, i) in items" :key="i">
         <MenuItem
